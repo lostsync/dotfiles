@@ -98,3 +98,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias clock="tty-clock -ct -C 4"
 alias clipboard="xclip -sel clip <"
+alias weather="curl wttr.in/atlanta"
