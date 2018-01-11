@@ -1,1 +1,0 @@
-/home/lostsync/.mc
