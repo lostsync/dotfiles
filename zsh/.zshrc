@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
   export ZSH=/home/lostsync/.oh-my-zsh
 
+# Support tab completion for colorls - isnt working properly
+# source $(dirname $(gem which colorls))/tab_complete.sh
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -11,6 +14,9 @@ ZSH_THEME="robbyrussell"
 
 # Set env for midnight commander theme
 export MC_SKIN=$HOME/.mc/solarized.ini
+
+# supposedly helps for powerline symbols
+POWERLEVEL9K_MODE="nerdfont-complete"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -99,3 +105,5 @@ source $ZSH/oh-my-zsh.sh
 alias clock="tty-clock -ct -C 4"
 alias clipboard="xclip -sel clip <"
 alias weather="curl wttr.in/atlanta"
+alias cls="colorls"
+alias pfind="ps aux | grep"

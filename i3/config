@@ -1,0 +1,234 @@
+exec --no-startup-id xrandr --output eDP1 --primary
+exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+exec --no-startup-id "devmon --no-gui"
+exec --no-startup-id /usr/bin/compton --config ~/.i3/compton.conf
+exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/wall-bg-edited.jpg
+exec --no-startup-id nm-applet
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -107, -107
+exec --no-startup-id cbatticon -n -i notification
+exec --no-startup-id fusuma
+exec --no-startup-id ~/bin/mylockd
+
+set $mod Mod4
+
+font pango:Input Mono, Font Awesome 8
+
+set $color #1080e4
+
+floating_modifier $mod
+
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+bindsym $mod+b exec --no-startup-id google-chrome
+
+bindsym $mod+Shift+q kill
+
+workspace_auto_back_and_forth yes
+bindsym $mod+c workspace back_and_forth
+bindsym $mod+x workspace next
+bindsym $mod+z workspace prev
+
+for_window [class="^.*"] border pixel 3
+
+gaps inner 20
+
+smart_borders on
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+bindsym $mod+d exec --no-startup-id "dmenu_run -i -p 'antipathy' -nb '#222222' -nf '#888888' -sb '$color' -sf '#DDDDDD'"
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+h split h
+
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+bindsym $mod+Shift+l exec --no-startup-id i3lock-next "LOCKED" "Shure Tech Mono Nerd Font" 20
+
+bindsym $mod+plus gaps inner all plus 5
+bindsym $mod+minus gaps inner all minus 5
+
+bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+set $tag1 "1  web"
+set $tag2 "2  comm"
+set $tag3 "3 &#xf120; term"
+set $tag4 "4  misc"
+set $tag5 "5  geary"
+set $tag6 "6  twitter
+set $tag7 "7  edit"
+set $tag8 "8  minecraft
+set $tag9 "9  mc"
+
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace $tag7
+bindsym $mod+8 workspace $tag8
+bindsym $mod+9 workspace $tag9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace $tag7
+bindsym $mod+Shift+8 move container to workspace $tag8
+bindsym $mod+Shift+9 move container to workspace $tag9
+bindsym $mod+Shift+0 move container to workspace 10
+
+for_window [window_role="pop-up"] floating enable;border normal
+for_window [window_role="task_dialog"] floating enable;border normal
+
+bindsym $mod+Shift+c reload
+
+bindsym $mod+Shift+r restart
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 2 px or 1 ppt
+        bindsym Down resize grow height 2 px or 1 ppt
+        bindsym Up resize shrink height 2 px or 1 ppt
+        bindsym Right resize grow width 2 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bar {
+    height 16
+    tray_output primary
+    tray_padding 2px
+    position top
+    # strip_workspace_numbers yes
+    # mode hide
+	colors {
+		background #222222
+		separator  #222222
+		statusline #dddddd		
+	
+		focused_workspace  $color  $color  #ffffff
+		active_workspace   #333333 #333333 #888888
+		inactive_workspace #333333 #333333 #888888
+		urgent_workspace   #900000 #900000 #ffffff
+	}
+	# status_command $HOME/.i3/conky-i3bar
+	# status_command i3status -c $HOME/.i3/i3status.conf
+          status_command i3status
+}
+
+
+client.focused          $color  $color  #dddddd
+client.focused_inactive #333333 #333333 #888888
+client.unfocused        #333333 #333333 #888888
+client.urgent           #900000 #900000 #ffffff
+
+bindsym $mod+Shift+t exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Shift+f exec --no-startup-id nemo --no-desktop
+bindsym $mod+Shift+m exec --no-startup-id ~/bin/minecraft.sh
+
+for_window [class="minecraft"] floating enable
+for_window [class="Android-file-transfer"] floating enable
+for_window [class="Vlc"] floating enable
+for_window [class="Nautilus" instance="file_progress"] floating enable
+for_window [class="^Pidgin$" title="^Buddy List$"] floating enable
+
+bindsym $mod+k exec amixer -q set Master 5%+ unmute
+bindsym $mod+j exec amixer -q set Master 5%- unmute
+bindsym $mod+m exec amixer -q set Master mute
+
+set $sysmenu "system:  [P]oweroff  re[B]oot  [L]ock  logou[T] "
+bindsym $mod+Shift+Return      mode $sysmenu
+mode $sysmenu {
+    bindsym p         exec shutdown -P now
+    bindsym b         exec shutdown -r now
+    #bindsym l         exec sh ~/.i3/i3lock.sh, mode "default"
+    bindsym l         exec i3lock-next "LOCKED" "Shure Tech Mono Nerd Font" 20
+    bindsym t         exec lxsession
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 
+
+exec --no-startup-id volumeicon
+exec --no-startup-id i3-msg 'workspace $tag2; exec pidgin'
+
