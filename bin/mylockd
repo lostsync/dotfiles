@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#i3lock-next "LOCKED" "Shure Tech Mono Nerd Font" 20
+xautolock -time 10 -notify 15 -notifier 'notify-send -t 10000 -u critical "LOCKING in 15 seconds"' -locker 'i3lock-next "LOCKED" "Shure Tech Mono Nerd Font" 20'
+
