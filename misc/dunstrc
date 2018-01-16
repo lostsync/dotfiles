@@ -1,6 +1,12 @@
 [global]
     font = Input Mono 8
 
+    icon_position = left
+    #max_icon_size = 24
+    # icon_folders = /usr/share/icons/Faenza-Darker/actions/24:/usr/share/icons/Faenza-Darker/apps/24:/usr/share/icons/Faenza-Darker/stock/24
+    icon_folders = /usr/share/icons/Mint-X-Dark/actions/24:/usr/share/icons/Mint-X-Dark/apps/24:/usr/share/icons/Mint-X-Dark/stock/24
+
+
     # allow a small subset of html markup:
     # <b>bold</b>
     # <i>italic</i>
@@ -198,7 +204,7 @@
 
 [notify-send]
     appname = notify-send
-    format = "%s"
+    format = "%s\n%b"
 
 [signed_on]
     appname = Pidgin
