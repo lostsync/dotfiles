@@ -1,27 +1,66 @@
+exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_huge_3234-AUAYuZg_jpg_dark_1.0.0.json -o cpcss
+exec_always --no-startup-id exec /home/lostsync/git/i3-renameworkspaces/i3-renameworkspaces.pl -c /home/lostsync/.i3/rnconf
+exec_always --no-startup-id xrdb -load ~/.Xresources 
+
 exec --no-startup-id xrandr --output eDP1 --primary
 exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
 exec --no-startup-id "devmon --no-gui"
 exec --no-startup-id /usr/bin/compton --config ~/.i3/compton.conf
-exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/wall-bg-edited.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -107, -107
-exec --no-startup-id cbatticon -n -i notification
+#exec --no-startup-id cbatticon -n -i notification
 exec --no-startup-id fusuma
 exec --no-startup-id ~/bin/mylockd
+# exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_21-FstWGEV_jpg_dark_1.0.0.json -o cpcss
 
+#DISABLED
+#exec --no-startup-id feh --recursive --randomize -bg-fill ~/Pictures/backgrounds
+#exec --no-startup-id feh --bg-fill /home/lostsync/Pictures/backgrounds/textured/18-5aVZZaf.jpg
+#exec_always ~/.i3/i3-autoname-workspaces.py &q
+
+# SETTINGS
 set $mod Mod4
-
-font pango:Input Mono, Font Awesome 8
-
+font pango:Input Mono Compressed, Font Awesome 9
 set $color #1080e4
-
 floating_modifier $mod
 
+# XRESOURCES COLORS
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $color0 i3wm.color0 #f0f0f0
+set_from_resource $color1 i3wm.color1 #f0f0f0
+set_from_resource $color2 i3wm.color2 #f0f0f0
+set_from_resource $color3 i3wm.color3 #f0f0f0
+set_from_resource $color4 i3wm.color4 #f0f0f0
+set_from_resource $color5 i3wm.color5 #f0f0f0
+set_from_resource $color6 i3wm.color6 #f0f0f0
+set_from_resource $color7 i3wm.color7 #f0f0f0
+set_from_resource $color8 i3wm.color8 #f0f0f0
+
+
+# wal/wallpaper binds
+bindsym $mod+Shift+p exec --no-startup-id wal -i ~/Pictures/backgrounds/huge -o cpcss
+bindsym $mod+Mod1+1 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0062-yoWGYn7_jpg_dark_1.0.0.json -o cpcss 
+bindsym $mod+Mod1+2 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0503-AfV1uVW_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+3 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0540-xOlzpoE_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+4 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0556-zsU1vwK_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+5 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_15-UyuWyFm_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+6 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0438-ajNBbNr_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+7 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0074-KVT8Tke_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+8 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0354-LvcsNAL_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+9 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_002-7sOAVPL_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Mod1+0 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_huge_3532-RkLefpH_jpg_dark_1.0.0.json -o cpcss
+bindsym $mod+Shift+b exec --no-startup-id wal -i `cat ~/likethese | shuf -n 1` -o cpcss 
+bindsym $mod+Shift+Mod1+p exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_21-FstWGEV_jpg_dark_1.0.0.json -o cpcss
+
+
+bindsym $mod+Mod1+c exec --no-startup-id /usr/bin/compton --config ~/.i3/compton.conf
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
-bindsym $mod+b exec --no-startup-id google-chrome
-
+bindsym $mod+b exec --no-startup-id firefox
+bindsym $mod+Shift+n exec --no-startup-id google-chrome --incognito
+bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f ~/Pictures/' -q 100
 bindsym $mod+Shift+q kill
 
 workspace_auto_back_and_forth yes
@@ -29,9 +68,9 @@ bindsym $mod+c workspace back_and_forth
 bindsym $mod+x workspace next
 bindsym $mod+z workspace prev
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2 
 
-gaps inner 20
+gaps inner 35
 
 smart_borders on
 
@@ -73,7 +112,9 @@ mode "$mode_gaps_outer" {
 }
 
 
-bindsym $mod+d exec --no-startup-id "dmenu_run -i -p 'antipathy' -nb '#222222' -nf '#888888' -sb '$color' -sf '#DDDDDD'"
+#bindsym $mod+d exec --no-startup-id "dmenu_run -i -p 'antipathy' -nb '#222222' -nf '#888888' -sb '$color' -sf '#DDDDDD' -fn 'Input Sans Condensed-8'"
+#bindsym $mod+d exec --no-startup-id exec rofi -show run -color-normal "#222222,#888888,#333333,#1080e4,#222222" -color-window "#222222"
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -97,48 +138,36 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle
 
-bindsym $mod+space focus mode_toggle
-
 bindsym $mod+a focus parent
 
 bindsym $mod+Shift+l exec --no-startup-id i3lock-next "LOCKED" "Shure Tech Mono Nerd Font" 20
 
-bindsym $mod+plus gaps inner all plus 5
+bindsym $mod+equal gaps inner all plus 5
 bindsym $mod+minus gaps inner all minus 5
 
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
 
-set $tag1 "1  web"
-set $tag2 "2  comm"
-set $tag3 "3 &#xf120; term"
-set $tag4 "4  misc"
-set $tag5 "5  geary"
-set $tag6 "6  twitter
-set $tag7 "7  edit"
-set $tag8 "8  minecraft
-set $tag9 "9  mc"
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-bindsym $mod+1 workspace $tag1
-bindsym $mod+2 workspace $tag2
-bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace $tag4
-bindsym $mod+5 workspace $tag5
-bindsym $mod+6 workspace $tag6
-bindsym $mod+7 workspace $tag7
-bindsym $mod+8 workspace $tag8
-bindsym $mod+9 workspace $tag9
-bindsym $mod+0 workspace 10
-
-bindsym $mod+Shift+1 move container to workspace $tag1
-bindsym $mod+Shift+2 move container to workspace $tag2
-bindsym $mod+Shift+3 move container to workspace $tag3
-bindsym $mod+Shift+4 move container to workspace $tag4
-bindsym $mod+Shift+5 move container to workspace $tag5
-bindsym $mod+Shift+6 move container to workspace $tag6
-bindsym $mod+Shift+7 move container to workspace $tag7
-bindsym $mod+Shift+8 move container to workspace $tag8
-bindsym $mod+Shift+9 move container to workspace $tag9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 for_window [window_role="pop-up"] floating enable;border normal
 for_window [window_role="task_dialog"] floating enable;border normal
@@ -148,12 +177,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
@@ -173,35 +196,48 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    height 16
+    i3bar_command i3bar
+    height 20
     tray_output primary
-    tray_padding 2px
+    tray_padding 3 
     position top
     # strip_workspace_numbers yes
     # mode hide
 	colors {
 		background #222222
 		separator  #222222
-		statusline #dddddd		
-	
-		focused_workspace  $color  $color  #ffffff
-		active_workspace   #333333 #333333 #888888
-		inactive_workspace #333333 #333333 #888888
-		urgent_workspace   #900000 #900000 #ffffff
+		statusline $color2 
+				   #bord #bg #text
+#		focused_workspace  $color  $color  #ffffff
+		focused_workspace  $bg $bg $color0
+		active_workspace   $bg $bg $fg
+		inactive_workspace #222222 #222222 $color2
+		urgent_workspace   #900000FF #900000FF $fg
 	}
 	# status_command $HOME/.i3/conky-i3bar
 	# status_command i3status -c $HOME/.i3/i3status.conf
-          status_command i3status
+        status_command ~/.i3status.sh
+        #status_command i3blocks -c ~/.i3blocks.conf
+
 }
+#exec_always --no-startup-id polybar example
 
-
-client.focused          $color  $color  #dddddd
-client.focused_inactive #333333 #333333 #888888
-client.unfocused        #333333 #333333 #888888
+#client.focused          $color  $color  #dddddd
+#client.focused_inactive #333333 #333333 #888888
+#client.unfocused        #333333 #333333 #888888
 client.urgent           #900000 #900000 #ffffff
 
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $fg     $fg 
+client.focused_inactive $bg     $bg     $fg
+client.unfocused        $bg     $bg     $bg
+
+#client.placeholder      $bg     $bg     $fg  $bg       $bg
+#client.urgent           $bg     $bg     $fg  $bg       $bg
+#client.background       $bg
+
 bindsym $mod+Shift+t exec --no-startup-id i3-sensible-terminal
-bindsym $mod+Shift+f exec --no-startup-id nemo --no-desktop
+bindsym $mod+Shift+f exec --no-startup-id caja --no-desktop
 bindsym $mod+Shift+m exec --no-startup-id ~/bin/minecraft.sh
 
 for_window [class="minecraft"] floating enable
@@ -209,10 +245,15 @@ for_window [class="Android-file-transfer"] floating enable
 for_window [class="Vlc"] floating enable
 for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="^Pidgin$" title="^Buddy List$"] floating enable
+for_window [class="qjackctl"] floating enable
 
 bindsym $mod+k exec amixer -q set Master 5%+ unmute
 bindsym $mod+j exec amixer -q set Master 5%- unmute
 bindsym $mod+m exec amixer -q set Master mute
+
+bindsym $mod+F1 exec --no-startup-id mpc -h 73.82.91.57 toggle
+bindsym $mod+F2 exec --no-startup-id mpc -h 73.82.91.57 cdprev
+bindsym $mod+F3 exec --no-startup-id mpc -h 73.82.91.57 next
 
 set $sysmenu "system:  [P]oweroff  re[B]oot  [L]ock  logou[T] "
 bindsym $mod+Shift+Return      mode $sysmenu
@@ -230,5 +271,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 
 
 exec --no-startup-id volumeicon
-exec --no-startup-id i3-msg 'workspace $tag2; exec pidgin'
+exec --no-startup-id i3-msg 'workspace number 2; exec pidgin'
+exec --no-startup-id sleep 1; i3-msg 'workspace 2'
 
