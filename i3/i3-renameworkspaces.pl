@@ -63,7 +63,7 @@ sub updatelabels {
             my $oldname = $$ws{'name'};
 	    # my $newname = join(' &#xF101;   ', $num, join(' ', @{$$ws{'windows'}}) || ());
 	    # my $newname = join(' | ', $num, join(' ', @{$$ws{'windows'}}) || ());
-            my $newname = join(' ', $num, join('  ', @{$$ws{'windows'}}) || ());
+            my $newname = join(' &#x2E31; ', $num, join('  ', @{$$ws{'windows'}}) || ());
             if ($num >= 1 && $oldname ne $newname) {
                 say("\"$oldname\" -> \"$newname\"");
                 $i3->command("rename workspace \"$oldname\" to \"$newname\"");

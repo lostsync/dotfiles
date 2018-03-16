@@ -1,19 +1,23 @@
-exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_huge_3234-AUAYuZg_jpg_dark_1.0.0.json -o cpcss
-exec_always --no-startup-id exec /home/lostsync/git/i3-renameworkspaces/i3-renameworkspaces.pl -c /home/lostsync/.i3/rnconf
+set $TERMINAL lxterminal
+
+#exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_huge_3234-AUAYuZg_jpg_dark_1.0.0.json -o cpcss
+exec_always --no-startup-id exec /home/antipathy/git/dotfiles/i3/i3-renameworkspaces.pl -c /home/antipathy/git/dotfiles/i3/rnconf
 exec_always --no-startup-id xrdb -load ~/.Xresources 
 
-exec --no-startup-id xrandr --output eDP1 --primary
-exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
-exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+exec --no-startup-id xrandr --output HDMI-0 --primary
+#exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+#exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
 exec --no-startup-id "devmon --no-gui"
-exec --no-startup-id /usr/bin/compton --config ~/.i3/compton.conf
+#exec --no-startup-id /usr/bin/compton --config ~/git/dotfiles/misc/compton.conf
+exec --no-startup-id /usr/bin/compton --config ~/.Xtmp/compton.conf
 exec --no-startup-id nm-applet
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -107, -107
+#exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -107, -107
 #exec --no-startup-id cbatticon -n -i notification
 exec --no-startup-id fusuma
 exec --no-startup-id ~/bin/mylockd
 # exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_21-FstWGEV_jpg_dark_1.0.0.json -o cpcss
 
+exec --no-startup-id wal -f /home/antipathy/.cache/wal/schemes/_home_antipathy_Pictures_backgrounds_1049-L2G9upQ_jpg_dark_1.0.0.json
 #DISABLED
 #exec --no-startup-id feh --recursive --randomize -bg-fill ~/Pictures/backgrounds
 #exec --no-startup-id feh --bg-fill /home/lostsync/Pictures/backgrounds/textured/18-5aVZZaf.jpg
@@ -21,8 +25,9 @@ exec --no-startup-id ~/bin/mylockd
 
 # SETTINGS
 set $mod Mod4
-font pango:Input Mono Compressed, Font Awesome 9
 set $color #1080e4
+#font pango:Iosevka Nerd Font, Input Mono, Font Awesome 9 
+font pango:Input Sans Compressed, Font Awesome 9 
 floating_modifier $mod
 
 # XRESOURCES COLORS
@@ -37,10 +42,19 @@ set_from_resource $color5 i3wm.color5 #f0f0f0
 set_from_resource $color6 i3wm.color6 #f0f0f0
 set_from_resource $color7 i3wm.color7 #f0f0f0
 set_from_resource $color8 i3wm.color8 #f0f0f0
+set_from_resource $color9 i3wm.color9
+set_from_resource $color10 i3wm.color10
+set_from_resource $color11 i3wm.color11
+set_from_resource $color12 i3wm.color12
+set_from_resource $color13 i3wm.color13
+set_from_resource $color14 i3wm.color14
+set_from_resource $color15 i3wm.color15
+set_from_resource $color16 i3wm.color16
 
+set_from_resource $bar_bg i3wm.color66
 
 # wal/wallpaper binds
-bindsym $mod+Shift+p exec --no-startup-id wal -i ~/Pictures/backgrounds/huge -o cpcss
+#bindsym $mod+Shift+p exec --no-startup-id wal -i ~/Pictures/backgrounds/huge -o cpcss
 bindsym $mod+Mod1+1 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0062-yoWGYn7_jpg_dark_1.0.0.json -o cpcss 
 bindsym $mod+Mod1+2 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0503-AfV1uVW_jpg_dark_1.0.0.json -o cpcss
 bindsym $mod+Mod1+3 exec --no-startup-id wal -f /home/lostsync/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0540-xOlzpoE_jpg_dark_1.0.0.json -o cpcss
@@ -51,11 +65,12 @@ bindsym $mod+Mod1+7 exec --no-startup-id wal -f /home/lostsync/.cache/wal/scheme
 bindsym $mod+Mod1+8 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_0354-LvcsNAL_jpg_dark_1.0.0.json -o cpcss
 bindsym $mod+Mod1+9 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_002-7sOAVPL_jpg_dark_1.0.0.json -o cpcss
 bindsym $mod+Mod1+0 exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_huge_3532-RkLefpH_jpg_dark_1.0.0.json -o cpcss
-bindsym $mod+Shift+b exec --no-startup-id wal -i `cat ~/likethese | shuf -n 1` -o cpcss 
+#bindsym $mod+Shift+b exec --no-startup-id wal -i `cat ~/likethese | shuf -n 1` -o cpcss 
+bindsym $mod+Shift+b exec --no-startup-id wal -i ~/Pictures/backgrounds
 bindsym $mod+Shift+Mod1+p exec --no-startup-id wal -f ~/.cache/wal/schemes/_home_lostsync_Pictures_backgrounds_21-FstWGEV_jpg_dark_1.0.0.json -o cpcss
 
 
-bindsym $mod+Mod1+c exec --no-startup-id /usr/bin/compton --config ~/.i3/compton.conf
+bindsym $mod+Mod1+c exec --no-startup-id /usr/bin/compton --config ~/.Xtmp/compton.conf
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 bindsym $mod+b exec --no-startup-id firefox
@@ -70,7 +85,7 @@ bindsym $mod+z workspace prev
 
 for_window [class="^.*"] border pixel 2 
 
-gaps inner 35
+gaps inner 39
 
 smart_borders on
 
@@ -115,6 +130,7 @@ mode "$mode_gaps_outer" {
 #bindsym $mod+d exec --no-startup-id "dmenu_run -i -p 'antipathy' -nb '#222222' -nf '#888888' -sb '$color' -sf '#DDDDDD' -fn 'Input Sans Condensed-8'"
 #bindsym $mod+d exec --no-startup-id exec rofi -show run -color-normal "#222222,#888888,#333333,#1080e4,#222222" -color-window "#222222"
 bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+space exec --no-startup-id rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -126,7 +142,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
+bindsym $mod+h focus left
+bindsym $mod+k focus down
+bindsym $mod+j focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+v split h
 
 bindsym $mod+v split v
 
@@ -204,14 +224,13 @@ bar {
     # strip_workspace_numbers yes
     # mode hide
 	colors {
-		background #222222
-		separator  #222222
-		statusline $color2 
-				   #bord #bg #text
-#		focused_workspace  $color  $color  #ffffff
-		focused_workspace  $bg $bg $color0
+		background $bar_bg
+		separator  $bar_bg
+		statusline $fg 
+				           #bord #bg #text
+		focused_workspace  $bg $bg $fg
 		active_workspace   $bg $bg $fg
-		inactive_workspace #222222 #222222 $color2
+		inactive_workspace $bar_bg $bar_bg $fg
 		urgent_workspace   #900000FF #900000FF $fg
 	}
 	# status_command $HOME/.i3/conky-i3bar
@@ -228,9 +247,9 @@ bar {
 client.urgent           #900000 #900000 #ffffff
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $fg     $fg 
+client.focused          $bg     $fg     $bg 
 client.focused_inactive $bg     $bg     $fg
-client.unfocused        $bg     $bg     $bg
+client.unfocused        $bg     $bg     $fg
 
 #client.placeholder      $bg     $bg     $fg  $bg       $bg
 #client.urgent           $bg     $bg     $fg  $bg       $bg
@@ -247,8 +266,8 @@ for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="^Pidgin$" title="^Buddy List$"] floating enable
 for_window [class="qjackctl"] floating enable
 
-bindsym $mod+k exec amixer -q set Master 5%+ unmute
-bindsym $mod+j exec amixer -q set Master 5%- unmute
+#bindsym $mod+k exec amixer -q set Master 5%+ unmute
+#bindsym $mod+j exec amixer -q set Master 5%- unmute
 bindsym $mod+m exec amixer -q set Master mute
 
 bindsym $mod+F1 exec --no-startup-id mpc -h 73.82.91.57 toggle
